@@ -1,0 +1,36 @@
+<form method="post">
+  <select id="consName" name="consName" value="{{consName}}">
+    <option value="白羊座">白羊座</option>
+    <option value="金牛座">金牛座</option>
+    <option value="双子座">双子座</option>
+    <option value="巨蟹座">巨蟹座</option>
+    <option value="狮子座">狮子座</option>
+    <option value="处女座">处女座</option>
+    <option value="天秤座">天秤座</option>
+    <option value="天蝎座">天蝎座</option>
+    <option value="射手座">射手座</option>
+    <option value="摩羯座">摩羯座</option>
+    <option value="水瓶座">水瓶座</option>
+    <option value="双鱼座">双鱼座</option>
+  </select>
+  <select id="type" name="type" value="{{type}}">
+    <option value="today">今日运势</option>
+    <option value="tomorrow">明日趋势</option>
+    <option value="week">本周行情</option>
+    <option value="nextweek">下周苗头</option>
+    <option value="month">本月事态</option>
+    <option value="year">今年状况</option>
+  </select>
+  <button type="submit">啥情况</button>
+</form>
+{{#if data}}
+<p>{{#if data.datetime}}{{data.datetime}}{{else}}{{data.date}}{{/if}}</p>
+<p>星座名称：{{data.name}}</p>
+{{#if data.all}}<p>综合指数：data.all</p>{{/if}}
+{{#if data.QFriend}}<p>速配星座：data.QFriend</p>{{/if}}
+<p>健康状况：{{data.health}}</p>
+<p>恋爱状况：{{data.love}}</p>
+{{#if data.money}}<p>财运状况：{{data.money}}</p>{{/if}}
+{{#if data.work}}<p>工作状况：{{data.work}}</p>{{/if}}
+{{#if data.job}}<p>求职状况：{{data.job}}</p>{{/if}}
+{{/if}}

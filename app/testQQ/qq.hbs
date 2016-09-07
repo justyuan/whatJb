@@ -1,0 +1,8 @@
+<form method="post">
+  <input type="number" name="qq" placeholder="please input your QQ number" value="{{qq}}"/>
+  <button type="submit">go</button>
+</form>
+{{#if result}}
+<p>你的QQ号{{result.conclusion}}</p>
+<p>{{result.analysis}}</p>
+{{/if}}
