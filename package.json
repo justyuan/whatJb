@@ -10,11 +10,22 @@
   "author": "liidad",
   "license": "ISC",
   "dependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
     "body-parser": "^1.15.2",
+    "css-loader": "^0.25.0",
+    "ejs": "^2.5.2",
     "express": "^4.14.0",
     "helmet": "^2.1.2",
+    "jsx-loader": "^0.13.2",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
     "request": "^2.74.0",
-    "request-promise": "^4.1.1"
+    "request-promise": "^4.1.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2"
   },
   "devDependencies": {
     "express-handlebars": "^3.0.0",
