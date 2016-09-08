@@ -2,7 +2,8 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: {
-        'view/home/index': './js/view/home/index.js'
+        'view/home/index': './js/view/home/index.js',
+        'view/testQQ/index': './js/view/testQQ/index.js'
     },
     output: {
         path: __dirname + '/output/js/',
@@ -10,8 +11,19 @@ module.exports = {
     },
     module: {
         loaders: [{
-            test: /\.js$/,
-            loader: 'babel-loader!jsx-loader?harmony'
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            loader: 'babel',
+            query: {
+                "presets": ["es2015", "react"],
+                "plugins": [
+                    ["antd", {
+                        "style": "css",
+                        "libraryDirectory": "lib",
+                        "libraryName": "antd"
+                    }]
+                ]
+            }
         }, {
             test: /\.css$/,
             loader: 'style-loader!css-loader'
