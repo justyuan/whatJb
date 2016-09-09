@@ -7,13 +7,13 @@ function initTestQQ(app) {
 
     app.post('/qq', (request, response) => {
         const qq = request.body.qq;
+        console.log('test qq num:' + qq);
         if (qq.length > 12) {
             response.render('testQQ/index', {
                 result: {
                     conclusion: '格式不正确',
                     analysis: '请输入正确的QQ号'
                 },
-                qq: qq
             });
         }
         rp({
@@ -25,9 +25,9 @@ function initTestQQ(app) {
             },
             json: true
         }).then((data) => {
-            console.log(data.error_code);
+            console.log('test result:' + data.error_code + data.reason);
             if (data.error_code === 0) {
-                response.render('testQQ/index', {
+                response.send({
                     result: data.result.data,
                     qq: qq
                 });
