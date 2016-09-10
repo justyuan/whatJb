@@ -3,7 +3,8 @@ var webpack = require('webpack');
 module.exports = {
     entry: {
         'view/home/index': './js/view/home/index.js',
-        'view/testQQ/index': './js/view/testQQ/index.js'
+        'view/testQQ/index': './js/view/testQQ/index.js',
+        'view/constellation/index': './js/view/constellation/index.js'
     },
     output: {
         path: __dirname + '/output/js/',
