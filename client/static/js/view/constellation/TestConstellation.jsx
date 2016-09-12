@@ -1,24 +1,29 @@
 import React from 'react';
-// import test from '../../store/testQQ/testQQPort';
+import Constellation from '../../store/constellation/Constellation';
 
-import {Select, Button} from 'antd';
+import {Select, Button, Timeline} from 'antd';
 
 export default class TestConstellation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             consName: '',
-            type: ''
+            type: '',
+            showResult: false,
+            consResultData: {}
         };
         this.test = this.test.bind(this);
         this.selectCon = this.selectCon.bind(this);
         this.selectType = this.selectType.bind(this);
     }
     test() {
-      // let _self = this;
-// testQQPort.testQQ(this.state.qqNum, (data) => {
-//     _self.setState({conclusion: data.result.conclusion, analysis: data.result.analysis});
-// });
+        let _self = this;
+        Constellation.test({
+            consName: this.state.consName,
+            type: this.state.type
+        }, (data) => {
+            _self.setState({consResultData: data.data, showResult: true});
+        });
     }
     selectCon(value) {
         this.setState({consName: value})
@@ -47,14 +52,21 @@ export default class TestConstellation extends React.Component {
                 <Select style={{
                     width: 200
                 }} placeholder="请选择星座" optionFilterProp="children" notFoundContent="无法找到" onChange={this.selectType}>
-                    <Option value="today">今日运势</Option>
-                    <Option value="tomorrow">明日趋势</Option>
                     <Option value="week">本周行情</Option>
                     <Option value="nextweek">下周苗头</Option>
                     <Option value="month">本月事态</Option>
-                    <Option value="year">今年状况</Option>
                 </Select>
                 <Button type="primary" size="large" onClick={this.test}>测一测</Button>
+                {this.state.showResult
+                    ? <Timeline>
+                            <Timeline.Item>{this.state.consResultData.name}</Timeline.Item>
+                            <Timeline.Item>{this.state.consResultData.health}</Timeline.Item>
+                            <Timeline.Item>{this.state.consResultData.money}</Timeline.Item>
+                            <Timeline.Item>{this.state.consResultData.love}</Timeline.Item>
+                            <Timeline.Item>{this.state.consResultData.work}</Timeline.Item>
+                        </Timeline>
+                    : false
+}
             </div>
         )
     }
