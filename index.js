@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 
 require('./server/testQQ').init(app)
 require('./server/constellation').init(app)
+require('./server/teamWeb').init(app)
 
 app.set('views', './client/view');
 app.set('view engine', 'html');
